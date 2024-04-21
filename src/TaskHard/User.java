@@ -27,6 +27,14 @@ public class User implements Cloneable{
         this.name = name;
     }
 
+    public Dog getDog() {
+        return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -38,6 +46,9 @@ public class User implements Cloneable{
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        User userCloned = (User) super.clone();
+        Dog dogCloned = (Dog) userCloned.getDog().clone();
+        userCloned.setDog(dogCloned);
+        return userCloned;
     }
 }
